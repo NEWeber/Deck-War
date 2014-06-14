@@ -1,0 +1,33 @@
+<script>
+	function Deck() {
+		this.cards = [];
+		this.count = function() {
+			return this.cards.length;
+		}
+		this.init = function() {
+			for (s = 1; s <=4; s++){
+				for (r = 1; r <=13; r++) {
+					this.cards.push(new Card(r, s))
+				}
+			}
+		}
+	}
+
+	function Card(rank, suit) {
+		this.rank = rank;
+		this.suit = suit;
+		this.show = function() {
+		console.log(this.rank + " of " + this.suit);
+		}
+	}
+
+	d = new Deck();
+	d.init();
+	var interpretS = [[1, "Spades"], [2, "Hearts"], [3, "Diamonds"], [4, "Clubs"]]
+	var interpretR = [[1, "Ace"], [11, "Jack"], [12, "Queen"], [13, "King"]]
+	var topCard = d.cards[0]
+	topCard.show;
+
+
+
+</script>

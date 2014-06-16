@@ -64,17 +64,32 @@
   var playIt
   playIt = confirm("Welcome to the card game War. Do you want to play?");
   if (playIt) {
-    alert("Great! Let's get started. I'll draw my card, here's yours.");
+    alert("Great! Let's get started. Aces are low. I'll draw my card, here's yours.");
     var myCardIndex
     myCardIndex = (Math.floor(Math.random() * 52));
-    alert("You have the " + d.cards[myCardIndex].show());
+    var myCard = d.cards[myCardIndex]
+    alert("You have the " + myCard.show());
 
-    compCardIndex = (Math.floor(Math.random() * 52));
+    var compCardIndex = (Math.floor(Math.random() * 52));
+    //Makes sure that the player and the computer don't end up with the same card
     while (compCardIndex === myCardIndex) {
       compCardIndex = (Math.floor(Math.random() * 52));
     }
-    alert("I have the " + d.cards[compCardIndex].show());
+    var compCard = d.cards[compCardIndex]
+    alert("I have the " + compCard.show());
+  
+
+    if (compCard.rank > myCard.rank) {
+      alert("I win!")
+    }
+    else if (compCard.rank < myCard.rank) {
+      alert("I guess you win.")
+    }
+    else {
+      alert("We're tied.")
+    }
   }
+  
   else {
     alert("I wouldn't either. No hard feelings.")
     } 

@@ -20,11 +20,7 @@
 		return interpretR(this.rank) + " of " + interpretS(this.suit);
 		}
 	}
-
-	d = new Deck();
-	d.init();
-	//var interpretS = [[1, "Spades"], [2, "Hearts"], [3, "Diamonds"], [4, "Clubs"]]
-	//var interpretR = [[1, "Ace"], [11, "Jack"], [12, "Queen"], [13, "King"]]
+  //Sets up functions to put the numbered ranks and suits into terms players are familiar with.
 	var interpretS = function(suitInput) {
 		switch(suitInput) {
 			case 1:
@@ -61,6 +57,9 @@
 		}
 	}
 
+  d = new Deck();
+  d.init();
+
   var playIt
   playIt = confirm("Welcome to the card game War. Do you want to play?");
   if (playIt) {
@@ -92,12 +91,5 @@
   
   else {
     alert("I wouldn't either. No hard feelings.")
-    } 
-  
-
-	var mike = d.cards[20];
-	mike.show();
-	d.cards[0].show();
-
-
+	} 
 </script>

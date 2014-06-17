@@ -59,46 +59,56 @@
 
   d = new Deck();
   d.init();
+  var bigWar = function() {
+    var playIt
+    playIt = confirm("Welcome to the card game War. Do you want to play?");
+    if (playIt) {
+      alert("Great! Let's get started. Aces are high.");
+      
 
-  var playIt
-  playIt = confirm("Welcome to the card game War. Do you want to play?");
-  if (playIt) {
-    alert("Great! Let's get started. Aces are high. I'll draw my card, here's yours.");
-    var myCardIndex
-    myCardIndex = (Math.floor(Math.random() * 52));
-    var myCard = d.cards[myCardIndex]
-    alert("You have the " + myCard.show());
+      var littleWar = function() {
+        alert("I'll draw my card, here's yours.");
+        var myCardIndex
+        myCardIndex = (Math.floor(Math.random() * 52));
+        var myCard = d.cards[myCardIndex]
+        alert("You have the " + myCard.show());
 
-    var compCardIndex = (Math.floor(Math.random() * 52));
-    //Makes sure that the player and the computer don't end up with the same card
-    while (compCardIndex === myCardIndex) {
-      compCardIndex = (Math.floor(Math.random() * 52));
-    }
-    var compCard = d.cards[compCardIndex]
-    alert("I have the " + compCard.show());
-    
-    //Set Ace rank to 14 so it beats all other cards
-    if (myCard.rank == 1) {
-      myCard.rank = 14
+        var compCardIndex = (Math.floor(Math.random() * 52));
+        //Makes sure that the player and the computer don't end up with the same card
+        while (compCardIndex === myCardIndex) {
+          compCardIndex = (Math.floor(Math.random() * 52));
+        }
+        var compCard = d.cards[compCardIndex]
+        alert("I have the " + compCard.show());
+        
+
+        //Set Ace rank to 14 so it beats all other cards
+        if (myCard.rank == 1) {
+          myCard.rank = 14
+        }
+
+        if (compCard.rank == 1) {
+          compCard.rank = 14
+        }
+
+        if (compCard.rank > myCard.rank) {
+          alert("I win!")
+        }
+        else if (compCard.rank < myCard.rank) {
+          alert("I guess you win.")
+        }
+        else {
+          alert("We're tied, put the card back, we'll do it again.");
+          littleWar();
+        }
+      }
+      
+      littleWar();
     }
 
-    if (compCard.rank == 1) {
-      compCard.rank = 14
-    }
-
-
-    if (compCard.rank > myCard.rank) {
-      alert("I win!")
-    }
-    else if (compCard.rank < myCard.rank) {
-      alert("I guess you win.")
-    }
     else {
-      alert("We're tied.")
-    }
+      alert("I wouldn't either. No hard feelings.")
+    } 
   }
-  
-  else {
-    alert("I wouldn't either. No hard feelings.")
-  } 
+  bigWar();
 </script>

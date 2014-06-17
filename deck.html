@@ -1,61 +1,61 @@
 <script>
-	function Deck() {
-		this.cards = [];
-		this.count = function() {
-			return this.cards.length;
-		}
-		this.init = function() {
-			for (s = 1; s <=4; s++){
-				for (r = 1; r <=13; r++) {
-					this.cards.push(new Card(r, s))
-				}
-			}
-		}
-	}
+  function Deck() {
+    this.cards = [];
+    this.count = function() {
+      return this.cards.length;
+    }
+    this.init = function() {
+      for (s = 1; s <=4; s++){
+        for (r = 1; r <=13; r++) {
+          this.cards.push(new Card(r, s))
+        }
+      }
+    }
+  }
 
-	function Card(rank, suit) {
-		this.rank = rank;
-		this.suit = suit;
-		this.show = function() {
-		return interpretR(this.rank) + " of " + interpretS(this.suit);
-		}
-	}
+  function Card(rank, suit) {
+    this.rank = rank;
+    this.suit = suit;
+    this.show = function() {
+    return interpretR(this.rank) + " of " + interpretS(this.suit);
+    }
+  }
   //Sets up functions to put the numbered ranks and suits into terms players are familiar with.
-	var interpretS = function(suitInput) {
-		switch(suitInput) {
-			case 1:
-			return "Spades";
-			break;
-			case 2:
-			return "Hearts";
-			break;
-			case 3:
-			return "Diamonds";
-			break;
-			case 4:
-			return "Clubs";
-			break;
-		}
-	}
+  var interpretS = function(suitInput) {
+    switch(suitInput) {
+      case 1:
+      return "Spades";
+      break;
+      case 2:
+      return "Hearts";
+      break;
+      case 3:
+      return "Diamonds";
+      break;
+      case 4:
+      return "Clubs";
+      break;
+    }
+  }
 
-	var interpretR = function(rankInput) {
-		switch(rankInput) {
-			case 1:
-			return "Ace";
-			break;
-			case 11:
-			return "Jack";
-			break;
-			case 12:
-			return "Queen";
-			break;
-			case 13:
-			return "King";
-			break;
-			default: 
-			return rankInput;
-		}
-	}
+  var interpretR = function(rankInput) {
+    switch(rankInput) {
+      case 1:
+      return "Ace";
+      break;
+      case 11:
+      return "Jack";
+      break;
+      case 12:
+      return "Queen";
+      break;
+      case 13:
+      return "King";
+      break;
+      default: 
+      return rankInput;
+    }
+  }
 
   d = new Deck();
   d.init();
@@ -63,7 +63,7 @@
   var playIt
   playIt = confirm("Welcome to the card game War. Do you want to play?");
   if (playIt) {
-    alert("Great! Let's get started. Aces are low. I'll draw my card, here's yours.");
+    alert("Great! Let's get started. Aces are high. I'll draw my card, here's yours.");
     var myCardIndex
     myCardIndex = (Math.floor(Math.random() * 52));
     var myCard = d.cards[myCardIndex]
@@ -76,7 +76,16 @@
     }
     var compCard = d.cards[compCardIndex]
     alert("I have the " + compCard.show());
-  
+    
+    //Set Ace rank to 14 so it beats all other cards
+    if (myCard.rank == 1) {
+      myCard.rank = 14
+    }
+
+    if (compCard.rank == 1) {
+      compCard.rank = 14
+    }
+
 
     if (compCard.rank > myCard.rank) {
       alert("I win!")
@@ -91,5 +100,5 @@
   
   else {
     alert("I wouldn't either. No hard feelings.")
-	} 
+  } 
 </script>

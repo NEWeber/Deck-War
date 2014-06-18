@@ -1,7 +1,11 @@
 WAR
 by Nicholas Weber
+Written for Code Fellows Foundations I course.
 v 0.25
 deck.html is a simple JavaScript implementation of the card game War.
+
+Problem domain:
+Implementing War with a standard 52 card deck with players and draw and compare cards. 
 
 Improvements over last version:
 

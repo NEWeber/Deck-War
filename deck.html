@@ -7,7 +7,7 @@
     this.init = function() {
       for (s = 1; s <=4; s++){
         for (r = 1; r <=13; r++) {
-          this.cards.push(new Card(r, s))
+          this.cards.push(new Card(r, s));
         }
       }
     }
@@ -18,12 +18,12 @@
     this.suit = suit;
     //Sets up functions to put the numbered ranks and suits into terms players are familiar with.
     this.interpR = function(rank) {
-      var ranks = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"]
-      return ranks[(rank - 1)]
+      var ranks = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+      return ranks[(rank - 1)];
     }
     this.interpS = function(suit) {
-      var suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
-      return suits[(suit - 1)]
+      var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
+      return suits[(suit - 1)];
     }
     this.show = function() {
     return this.interpR(this.rank) + " of " + this.interpS(this.suit) + ".";
@@ -41,9 +41,9 @@
 
       var littleWar = function() {
         alert("I'll draw my card, here's yours.");
-        var myCardIndex
+        var myCardIndex;
         myCardIndex = (Math.floor(Math.random() * 52));
-        var myCard = d.cards[myCardIndex]
+        var myCard = d.cards[myCardIndex];
         alert("You have the " + myCard.show());
 
         var compCardIndex = (Math.floor(Math.random() * 52));
@@ -57,18 +57,18 @@
 
         //Set Ace rank to 14 so it beats all other cards
         if (myCard.rank == 1) {
-          myCard.rank = 14
+          myCard.rank = 14;
         }
 
         if (compCard.rank == 1) {
-          compCard.rank = 14
+          compCard.rank = 14;
         }
 
         if (compCard.rank > myCard.rank) {
-          alert("I win!")
+          alert("I win!");
         }
         else if (compCard.rank < myCard.rank) {
-          alert("I guess you win.")
+          alert("I guess you win.");
         }
         //If tied, call the program recursively until there's a winner.
         else {
@@ -81,7 +81,7 @@
     }
 
     else {
-      alert("I wouldn't either. No hard feelings.")
+      alert("I wouldn't either. No hard feelings.");
     } 
   }
   bigWar();

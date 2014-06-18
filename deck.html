@@ -16,44 +16,17 @@
   function Card(rank, suit) {
     this.rank = rank;
     this.suit = suit;
+    //Sets up functions to put the numbered ranks and suits into terms players are familiar with.
+    this.interpR = function(rank) {
+      var ranks = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"]
+      return ranks[(rank - 1)]
+    }
+    this.interpS = function(suit) {
+      var suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
+      return suits[(suit - 1)]
+    }
     this.show = function() {
-    return interpretR(this.rank) + " of " + interpretS(this.suit);
-    }
-  }
-  //Sets up functions to put the numbered ranks and suits into terms players are familiar with.
-  var interpretS = function(suitInput) {
-    switch(suitInput) {
-      case 1:
-      return "Spades";
-      break;
-      case 2:
-      return "Hearts";
-      break;
-      case 3:
-      return "Diamonds";
-      break;
-      case 4:
-      return "Clubs";
-      break;
-    }
-  }
-
-  var interpretR = function(rankInput) {
-    switch(rankInput) {
-      case 1:
-      return "Ace";
-      break;
-      case 11:
-      return "Jack";
-      break;
-      case 12:
-      return "Queen";
-      break;
-      case 13:
-      return "King";
-      break;
-      default: 
-      return rankInput;
+    return this.interpR(this.rank) + " of " + this.interpS(this.suit) + ".";
     }
   }
 
@@ -97,6 +70,7 @@
         else if (compCard.rank < myCard.rank) {
           alert("I guess you win.")
         }
+        //If tied, call the program recursively until there's a winner.
         else {
           alert("We're tied, put the card back, we'll do it again.");
           littleWar();

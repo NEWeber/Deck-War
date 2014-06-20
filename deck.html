@@ -13,7 +13,7 @@
     }
     //Fast shuffle that we went over in class
     this.shuffle = function() {
-      var m = this.cards.length, t, rand;
+      var m = this.count(), t, rand;
       while (m > 0) {
         rand = Math.floor(Math.random() * m--);
 
@@ -21,6 +21,9 @@
         this.cards[m] = this.cards[rand];
         this.cards[rand] = t;
       }
+    }
+    this.deal = function() {
+      return this.cards.pop();
     }
   }
 
@@ -41,32 +44,22 @@
     }
   }
 
-  d = new Deck();
+  var d = new Deck();
   d.init();
-  d.shuffle();
-  /*
-  d = new Deck();
-  d.init();
+  
   var bigWar = function() {
     var playIt
     playIt = confirm("Welcome to the card game War. Do you want to play?");
     if (playIt) {
-      alert("Great! Let's get started. Aces are high.");
+      d.shuffle();
+      alert("Great! Let's get started. I've shuffled the deck. Aces are high.");
       
-
       var littleWar = function() {
         alert("I'll draw my card, here's yours.");
-        var myCardIndex;
-        myCardIndex = (Math.floor(Math.random() * 52));
-        var myCard = d.cards[myCardIndex];
+        var myCard = d.deal();
         alert("You have the " + myCard.show());
 
-        var compCardIndex = (Math.floor(Math.random() * 52));
-        //Makes sure that the player and the computer don't end up with the same card
-        while (compCardIndex === myCardIndex) {
-          compCardIndex = (Math.floor(Math.random() * 52));
-        }
-        var compCard = d.cards[compCardIndex]
+        var compCard = d.deal();
         alert("I have the " + compCard.show());
         
 
@@ -85,13 +78,19 @@
         else if (compCard.rank < myCard.rank) {
           alert("I guess you win.");
         }
-        //If tied, call the program recursively until there's a winner.
+        //If tied, call the program recursively until there's a winner. If you run out of cards without a winner, the program ends.
         else {
-          alert("We're tied, put the card back, we'll do it again.");
+          if (d.cards.length > 1) {
+          alert("We're tied, let's draw the next card to break the tie.");
           littleWar();
+          }
+          else {
+            alert("We've run out of cards. What are the odds?");
+            alert("I don't want to shuffle and keep playing, let's call it a draw, okay?");
+          }
         }
       }
-      
+  
       littleWar();
     }
 
@@ -100,5 +99,4 @@
     } 
   }
   bigWar();
-  */
 </script>

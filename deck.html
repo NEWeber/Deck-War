@@ -11,6 +11,17 @@
         }
       }
     }
+    //Fast shuffle that we went over in class
+    this.shuffle = function() {
+      var m = this.cards.length, t, rand;
+      while (m > 0) {
+        rand = Math.floor(Math.random() * m--);
+
+        t = this.cards[m];
+        this.cards[m] = this.cards[rand];
+        this.cards[rand] = t;
+      }
+    }
   }
 
   function Card(rank, suit) {
@@ -30,6 +41,10 @@
     }
   }
 
+  d = new Deck();
+  d.init();
+  d.shuffle();
+  /*
   d = new Deck();
   d.init();
   var bigWar = function() {
@@ -85,4 +100,5 @@
     } 
   }
   bigWar();
+  */
 </script>
